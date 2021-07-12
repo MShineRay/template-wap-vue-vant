@@ -1,11 +1,13 @@
-process.env.FE_APP_FEBUILDTIME = new Date().getTime()
-process.env.FE_APP_FEBUILDTIMEX = new Date()
+const pkg = require('./package.json')
+process.env.VUE_APP_FEBUILDTIME = new Date().getTime()
+process.env.VUE_APP_FEBUILDTIMEX = new Date()
+process.env.VUE_APP_FEPROJECTNAME = pkg.name
 const feApiLocal = require('./fe-service/fe-api-local/index.js')
 const feApiProxy = require('./vue.config.proxy')
 const webpack = require('webpack')
 const path = require('path')
 const AddAssetHtmlPlugin = require('add-asset-html-webpack-plugin')
-const pkg = require('./package.json')
+
 const BundleAnalyzerPlugin = require('webpack-bundle-analyzer').BundleAnalyzerPlugin
 const dllPath = './' + pkg.dllPath
 const linkPath = '/' + pkg.dllPath.split('/')[1]
@@ -20,7 +22,7 @@ require('events').EventEmitter.defaultMaxListeners = 0
  * 根据分支来开启sourcemap
  * deploy/q、master为生产分支，不开启
  */
-const fs = require('fs')
+// const fs = require('fs')
 let IS_PRODUCTIONSOURCEMAP = true
 // const isGitDir = fs.statSync('./.git')
 // if (isGitDir) {
@@ -43,8 +45,8 @@ module.exports = {
       // the source template
       template: 'public/index.html',
       // output as dist/index.html
-      filename: 'index.html'
-    }
+      filename: 'index.html',
+    },
   },
 
   // lintOnSave：{ type:Boolean default:true } 问你是否使用eslint
@@ -65,7 +67,7 @@ module.exports = {
     proxy: feApiProxy(),
     before(app) {
       feApiLocal(app)
-    }
+    },
   },
   // webpack的配置在这个属性里修改configureWebpack
   configureWebpack: config => {
@@ -76,7 +78,7 @@ module.exports = {
       config.plugins.push(
         new webpack.DllReferencePlugin({
           context: process.cwd(),
-          manifest: require(dllPath + '/vendor-manifest.json')
+          manifest: require(dllPath + '/vendor-manifest.json'),
         })
       )
       config.plugins.push(
@@ -86,10 +88,12 @@ module.exports = {
           // dll 引用路径
           publicPath: linkPath,
           // dll最终输出的目录
-          outputPath: linkPath
+          outputPath: linkPath,
         })
       )
 
+      // chunk文件新增构建信息
+      // config.plugins.push(new webpack.BannerPlugin(makeInfo))
       if (process.env.Analyse) {
         config.plugins.push(new BundleAnalyzerPlugin())
       }
@@ -97,5 +101,4 @@ module.exports = {
   },
   // 第三方插件配置
   // pluginOptions: {},
-
 }

@@ -1,9 +1,7 @@
 <template>
   <div class="test">
-test page
-    <el-button @click="testAjax">
-      ajax
-    </el-button>
+    test page
+    <van-button @click="testAjax"> ajax </van-button>
   </div>
 </template>
 
@@ -12,26 +10,24 @@ test page
 // import HelloWorld from "@/components/HelloWorld.vue";
 
 export default {
-  name: "Test",
+  name: 'Test',
   components: {
     // HelloWorld,
   },
-  methods:{
-    testAjax(){
+  methods: {
+    testAjax() {
       let option = {
-        test:'post'
+        test: 'post',
       }
       this.feAxios.post(this.feApiConfig['001'], option).then(res => {
         console.log('res:', res)
       })
-    }
-  }
-};
+    },
+  },
+}
 </script>
 
-
 <style lang="scss" scoped>
-.home{
-
+.home {
 }
 </style>

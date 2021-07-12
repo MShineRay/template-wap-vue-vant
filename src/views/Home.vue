@@ -1,7 +1,5 @@
 <template>
-  <div class="home">
-    hello word, home page
-  </div>
+  <div class="home">hello word, home page</div>
 </template>
 
 <script>
@@ -9,16 +7,14 @@
 // import HelloWorld from "@/components/HelloWorld.vue";
 
 export default {
-  name: "Home",
+  name: 'Home',
   components: {
     // HelloWorld,
   },
-};
+}
 </script>
 
-
 <style lang="scss" scoped>
-.home{
-
+.home {
 }
 </style>

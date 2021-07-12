@@ -12,7 +12,7 @@ const Regex = {
   TelAreaCoe: /^(0|０)\d{2,4}/, // 固话-区号: 以0开头，2~4位纯数字
   Telephone: /^\d{4,9}$/, // 固话-电话: 4~9位纯数字
   ExtensionNumber: /^\d{1,4}$/, // 固话-分机号: 1~4位纯数字
-  Email2: /^\w+@\w+(\.\w+)+(\,\w+@\w+(\.\w+)+)*$/, // 标准邮箱格式XXX.XXX@XXX.XXX
+  Email2: /^\w+@\w+(\.\w+)+(,\w+@\w+(\.\w+)+)*$/, // 标准邮箱格式XXX.XXX@XXX.XXX
   ZipCode: /^\d{6}$/, // 6位纯数字
 
   Name: /^[\u4E00-\u9FA5A-Za-z]+$/, // 姓名格式 汉字、英文大小写
@@ -21,32 +21,32 @@ const Regex = {
   PositiveInteger: /^([1-9]\d*)$/, // 正整数
   Age: /^([1-9]\d*|0)$/,
   Money: /^[0-9]{1,9}(\.[0-9]{1})?$/, // 金额 保留 1 位小数
-  NegativeMoney: /^(\-|\+)?[0-9]{1,9}(\.[0-9]{1})?$/, // 金额 保留 1 位小数 可输入负数
+  NegativeMoney: /^(-|\+)?[0-9]{1,9}(\.[0-9]{1})?$/, // 金额 保留 1 位小数 可输入负数
   Money2: /^[0-9]{1,9}(\.[0-9]{1,2})?$/, // 金额 保留 2 位小数
-  NegativeMoney2: /^(\-|\+)?[0-9]{1,9}(\.[0-9]{1,2})?$/, // 金额 保留 2 位小数 可输入负数
+  NegativeMoney2: /^(-|\+)?[0-9]{1,9}(\.[0-9]{1,2})?$/, // 金额 保留 2 位小数 可输入负数
   // 密码:密码的强度必须是包含大小写字母和数字的组合，不能使用特殊字符，长度在8-10之间
   Password: /^(?=.*\\d)(?=.*[a-z])(?=.*[A-Z]).{6,20}$/,
   Chinese: /^[_\\W\\u4e00-\\u9fa5]{2,20}$/, // 中文
   // 邮箱地址
-  Email: /^([a-zA-Z0-9_\.\-])+\@(([a-zA-Z0-9\-])+\.)+([a-zA-Z0-9]{2,4})+$/,
+  Email: /^([a-zA-Z0-9_.-])+@(([a-zA-Z0-9-])+\.)+([a-zA-Z0-9]{2,4})+$/,
   // 身份证
-  IdCard: /^(^[1-9]\d{7}((0\d)|(1[0-2]))(([0|1|2]\d)|3[0-1])\d{3}$)|(^[1-9]\d{5}[1-9]\d{3}((0\d)|(1[0-2]))(([0|1|2]\d)|3[0-1])((\d{4})|\d{3}[Xx])$)$/,
+  IdCard:
+    /^(^[1-9]\d{7}((0\d)|(1[0-2]))(([0|1|2]\d)|3[0-1])\d{3}$)|(^[1-9]\d{5}[1-9]\d{3}((0\d)|(1[0-2]))(([0|1|2]\d)|3[0-1])((\d{4})|\d{3}[Xx])$)$/,
   // 日期“yyyy-mm-dd“ 格式的日期校验，已考虑平闰年。
   Date: /^(?:(?!0000)[0-9]{4}-(?:(?:0[1-9]|1[0-2])-(?:0[1-9]|1[0-9]|2[0-8])|(?:0[13-9]|1[0-2])-(?:29|30)|(?:0[13578]|1[02])-31)|(?:[0-9]{2}(?:0[48]|[2468][048]|[13579][26])|(?:0[48]|[2468][048]|[13579][26])00)-02-29)$/,
   // 手机号
   Phone: /^[1][3,4,5,6,7,8,9]\d{9}$/, // 1开头，第二位不允许为0、1、2，共11位纯数字
   MaskPhone: /^1\d{2}[*]{4}\d{4}$/,
-  HKMobile: /^\d{8}$/,// 香港手机号或固话
-  MaskHKMobile: /^\d{2}[*]{4}\d{2}$/,// 香港手机号或固话
-  Integer: /^\d+$/,//整数
-  
+  HKMobile: /^\d{8}$/, // 香港手机号或固话
+  MaskHKMobile: /^\d{2}[*]{4}\d{2}$/, // 香港手机号或固话
+  Integer: /^\d+$/, //整数
+
   //https://blog.csdn.net/lsj19830812/article/details/4137003/
-  WindowsFileName:/^(?!((^(con)$)|^(con)\/..*|(^(prn)$)|^(prn)\/..*|(^(aux)$)|^(aux)\/..*|(^(nul)$)|^(nul)\/..*|(^(com)[1-9]$)|^(com)[1-9]\/..*|(^(lpt)[1-9]$)|^(lpt)[1-9]\/..*)|^\/s+|.*\/s$)(^[^/:/*/?/"/</>/|]{1,255}$)$/
+  WindowsFileName:
+    /^(?!((^(con)$)|^(con)\/..*|(^(prn)$)|^(prn)\/..*|(^(aux)$)|^(aux)\/..*|(^(nul)$)|^(nul)\/..*|(^(com)[1-9]$)|^(com)[1-9]\/..*|(^(lpt)[1-9]$)|^(lpt)[1-9]\/..*)|^\/s+|.*\/s$)(^[^/:/*/?/"/</>/|]{1,255}$)$/,
 }
 const trim = function (string) {
-  return (
-    string || ''
-  ).replace(/^[\s\uFEFF]+|[\s\uFEFF]+$/g, '')
+  return (string || '').replace(/^[\s\uFEFF]+|[\s\uFEFF]+$/g, '')
 }
 let feTools = {
   add: function (a, b) {
@@ -61,9 +61,7 @@ let feTools = {
     } catch (f) {
       d = 0
     }
-    return e = Math.pow(10, Math.max(c, d)), (
-      this.mul(a, e) + this.mul(b, e)
-    ) / e
+    return (e = Math.pow(10, Math.max(c, d))), (this.mul(a, e) + this.mul(b, e)) / e
   },
   sub: function (a, b) {
     let c, d, e
@@ -77,33 +75,44 @@ let feTools = {
     } catch (f) {
       d = 0
     }
-    return e = Math.pow(10, Math.max(c, d)), (
-      this.mul(a, e) - this.mul(b, e)
-    ) / e
+    return (e = Math.pow(10, Math.max(c, d))), (this.mul(a, e) - this.mul(b, e)) / e
   },
   mul: function (a, b) {
-    let c = 0, d = a.toString(), e = b.toString()
+    let c = 0,
+      d = a.toString(),
+      e = b.toString()
     try {
       c += d.split('.')[1].length
     } catch (f) {
+      console.error(f)
     }
     try {
       c += e.split('.')[1].length
     } catch (f) {
+      console.error(f)
     }
-    return Number(d.replace('.', '')) * Number(e.replace('.', '')) / Math.pow(10, c)
+    return (Number(d.replace('.', '')) * Number(e.replace('.', ''))) / Math.pow(10, c)
   },
   div: function (a, b) {
-    let c, d, e = 0, f = 0
+    let c,
+      d,
+      e = 0,
+      f = 0
     try {
       e = a.toString().split('.')[1].length
     } catch (g) {
+      console.log(g)
     }
     try {
       f = b.toString().split('.')[1].length
     } catch (g) {
+      console.log(g)
     }
-    return c = Number(a.toString().replace('.', '')), d = Number(b.toString().replace('.', '')), this.mul(c / d, Math.pow(10, f - e))
+    return (
+      (c = Number(a.toString().replace('.', ''))),
+      (d = Number(b.toString().replace('.', ''))),
+      this.mul(c / d, Math.pow(10, f - e))
+    )
   },
   formatDate: function (val, type) {
     if (!!val && val !== 'null' && val !== 'undefined') {
@@ -116,28 +125,25 @@ let feTools = {
       let m = date.getMinutes() // 获取分钟数(0-59)
       let s = date.getSeconds() // 获取秒数(0-59)
       switch (type) {
-      case 'YYYY-MM-DD':
-        return Y + '-' + (
-          M < 10 ? '0' + M : M
-        ) + '-' + (
-          D < 10 ? '0' + D : D
-        )
-        break
-      case 'YYYY-MM-DD hh:mm:ss':
-        return Y + '-' + (
-          M < 10 ? '0' + M : M
-        ) + '-' + (
-          D < 10 ? '0' + D : D
-        ) + ' ' + (
-          h < 10 ? '0' + h : h
-        ) + ':' + (
-          m < 10 ? '0' + m : m
-        ) + ':' + (
-          s < 10 ? '0' + s : s
-        )
-        break
-      default:
-        break
+        case 'YYYY-MM-DD':
+          return Y + '-' + (M < 10 ? '0' + M : M) + '-' + (D < 10 ? '0' + D : D)
+
+        case 'YYYY-MM-DD hh:mm:ss':
+          return (
+            Y +
+            '-' +
+            (M < 10 ? '0' + M : M) +
+            '-' +
+            (D < 10 ? '0' + D : D) +
+            ' ' +
+            (h < 10 ? '0' + h : h) +
+            ':' +
+            (m < 10 ? '0' + m : m) +
+            ':' +
+            (s < 10 ? '0' + s : s)
+          )
+        default:
+          break
       }
     } else {
       return '--'
@@ -148,7 +154,9 @@ let feTools = {
    * @return {}
    */
   clone(obj) {
-    return this.checkType(obj, 'Object') || this.checkType(obj, 'Array') ? this.strToJson(this.jsonToStr(obj)) : {}
+    return this.checkType(obj, 'Object') || this.checkType(obj, 'Array')
+      ? this.strToJson(this.jsonToStr(obj))
+      : {}
   },
   Validate: {
     // 正则判断
@@ -163,7 +171,7 @@ let feTools = {
     },
     reg(regKey) {
       return Regex[regKey]
-    }
+    },
   },
   /**
    * 通过身份证号码获取出生年月日
@@ -247,9 +255,7 @@ let feTools = {
    */
   maskStr: function (str, beginIndex, endIndex, maskStr) {
     let mask = maskStr || '*'
-    let strAry = (
-      str + ''
-    ).split('')
+    let strAry = (str + '').split('')
     for (; beginIndex < endIndex; beginIndex++) {
       strAry[beginIndex] = mask
     }
@@ -270,7 +276,9 @@ let feTools = {
     return document.querySelector(el)
   },
   fix(num, length) {
-    return ('' + num).length < length ? ((new Array(length + 1)).join('0') + num).slice(-length) : '' + num
+    return ('' + num).length < length
+      ? (new Array(length + 1).join('0') + num).slice(-length)
+      : '' + num
   },
   /**
    * 获取当前日期时间 如2019-02-26 16:17:15
@@ -288,9 +296,18 @@ let feTools = {
     if (strDate >= 0 && strDate <= 9) {
       strDate = '0' + strDate
     }
-    let currentDateTime = date.getFullYear() + seperator1 + month + seperator1 + strDate +
-      ' ' + date.getHours() + seperator2 + date.getMinutes() +
-      seperator2 + date.getSeconds()
+    let currentDateTime =
+      date.getFullYear() +
+      seperator1 +
+      month +
+      seperator1 +
+      strDate +
+      ' ' +
+      date.getHours() +
+      seperator2 +
+      date.getMinutes() +
+      seperator2 +
+      date.getSeconds()
     return currentDateTime
   },
   /**
@@ -347,11 +364,11 @@ let feTools = {
     let endDate = new Date('2020/11/24 ' + endTime)
     let endDateTime = endDate.getTime()
     let result = []
-    result.push(feTools.format( startDate, format))
-    while(startDateTime < endDateTime){
+    result.push(feTools.format(startDate, format))
+    while (startDateTime < endDateTime) {
       startDateTime += interval
       let nextDate = new Date(startDateTime)
-      result.push(feTools.format( nextDate, format))
+      result.push(feTools.format(nextDate, format))
     }
     return result
   },
@@ -368,31 +385,37 @@ let feTools = {
   format(date, format) {
     let d = date || new Date()
     const o = {
-      "M+": d.getMonth() + 1,
-      "d+": d.getDate(),
-      "h+": d.getHours(),
-      "H+": d.getHours(),
-      "m+": d.getMinutes(),
-      "s+": d.getSeconds(),
-      "q+": Math.floor((d.getMonth() + 3) / 3),
-      "S": d.getMilliseconds()
+      'M+': d.getMonth() + 1,
+      'd+': d.getDate(),
+      'h+': d.getHours(),
+      'H+': d.getHours(),
+      'm+': d.getMinutes(),
+      's+': d.getSeconds(),
+      'q+': Math.floor((d.getMonth() + 3) / 3),
+      S: d.getMilliseconds(),
     }
     if (/(y+)/.test(format)) {
-      format = format.replace(RegExp.$1, (d.getFullYear() + "").substr(4 - RegExp.$1.length));
+      format = format.replace(RegExp.$1, (d.getFullYear() + '').substr(4 - RegExp.$1.length))
     }
     for (let k in o) {
-      if (new RegExp("(" + k + ")").test(format)) {
-        format = format.replace(RegExp.$1, RegExp.$1.length === 1 ? o[k] : ("00" + o[k]).substr(("" + o[k]).length));
+      if (new RegExp('(' + k + ')').test(format)) {
+        format = format.replace(
+          RegExp.$1,
+          RegExp.$1.length === 1 ? o[k] : ('00' + o[k]).substr(('' + o[k]).length)
+        )
       }
     }
-    return format;
+    return format
   },
   addEvent(element, eType, handle, bol = false) {
-    if (element.addEventListener) { // 如果支持addEventListener
+    if (element.addEventListener) {
+      // 如果支持addEventListener
       element.addEventListener(eType, handle, bol)
-    } else if (element.attachEvent) { // 如果支持attachEvent
+    } else if (element.attachEvent) {
+      // 如果支持attachEvent
       element.attachEvent('on' + eType, handle)
-    } else { // 否则使用兼容的onclick绑定
+    } else {
+      // 否则使用兼容的onclick绑定
       element['on' + eType] = handle
     }
   },
@@ -413,9 +436,7 @@ let feTools = {
   addClass(el, cls) {
     if (!el) return
     let curClass = el.className
-    let classes = (
-      cls || ''
-    ).split(' ')
+    let classes = (cls || '').split(' ')
 
     for (let i = 0, j = classes.length; i < j; i++) {
       let clsName = classes[i]
@@ -443,9 +464,7 @@ let feTools = {
     if (el.classList) {
       return el.classList.contains(cls)
     } else {
-      return (
-        ' ' + el.className + ' '
-      ).indexOf(' ' + cls + ' ') > -1
+      return (' ' + el.className + ' ').indexOf(' ' + cls + ' ') > -1
     }
   },
   /**
@@ -521,17 +540,17 @@ let feTools = {
     if (window.innerHeight !== undefined) {
       return {
         width: window.innerWidth,
-        height: window.innerHeight
+        height: window.innerHeight,
       }
     } else if (document.compatMode === 'CSS1Compat') {
       return {
         width: document.documentElement.clientWidth,
-        height: document.documentElement.clientHeight
+        height: document.documentElement.clientHeight,
       }
     } else {
       return {
         width: document.body.clientWidth,
-        height: document.body.clientHeight
+        height: document.body.clientHeight,
       }
     }
   },
@@ -549,19 +568,10 @@ let feTools = {
   jsonToStr(obj) {
     return obj ? JSON.stringify(obj) : ''
   },
-  /**
-   * 以二进制流方式导出
-   * @param res
-   * @param fileName
-   * @param rename 重命名
-   * @param postfix 文件名后缀
-   */
-  downLoadExcel(res, fileName, rename=true, postfix='.xlsx') {
-    feTools.downFile(res, fileName)
-  },
-  downFile(res, fileName){
+  downFile(res, fileName) {
     const blob = new Blob([res])
-    if ('download' in document.createElement('a')) { // 非IE下载
+    if ('download' in document.createElement('a')) {
+      // 非IE下载
       const elink = document.createElement('a')
       elink.download = fileName
       elink.style.display = 'none'
@@ -570,7 +580,8 @@ let feTools = {
       elink.click()
       URL.revokeObjectURL(elink.href) // 释放URL 对象
       document.body.removeChild(elink)
-    } else { // IE10+下载
+    } else {
+      // IE10+下载
       navigator.msSaveBlob(blob, fileName)
     }
   },
@@ -581,7 +592,7 @@ let feTools = {
   exportErrorHandler: function (res) {
     const reader = new FileReader()
     const blob = new Blob([res])
-    reader.onload = (e) => {
+    reader.onload = e => {
       try {
         let res = JSON.parse(e.target.result)
         if (res.Status * 1 !== 1 && res.Msg) {
@@ -612,7 +623,7 @@ let feTools = {
     oDate2 = strDateEnd.split(strSeparator)
     let strDateS = new Date(oDate1[0], oDate1[1] - 1, oDate1[2])
     let strDateE = new Date(oDate2[0], oDate2[1] - 1, oDate2[2])
-    iDays = parseInt(Math.abs(strDateE.getTime() - strDateS.getTime()) / 1000 / 60 / 60 / 24)// 把相差的毫秒数转换为天数
+    iDays = parseInt(Math.abs(strDateE.getTime() - strDateS.getTime()) / 1000 / 60 / 60 / 24) // 把相差的毫秒数转换为天数
     return iDays
   },
   /**
@@ -627,7 +638,7 @@ let feTools = {
       return true;
     }
     return false;*/
-    return (navigator.platform === "Win32") || (navigator.platform === "Windows")
+    return navigator.platform === 'Win32' || navigator.platform === 'Windows'
   },
   /**
    * 遮盖手机号
@@ -681,23 +692,35 @@ let feTools = {
    * @param key
    * @returns {Array}
    */
-  uniqueAryObject(arr,key){
-    let newObj = {},newArr = [];
-    for(let i=0; i<arr.length; i++){
-      let item = arr[i];
-      if(!newObj[item[key]]){
-        newObj[item[key]] = newArr.push(item);
+  uniqueAryObject(arr, key) {
+    let newObj = {},
+      newArr = []
+    for (let i = 0; i < arr.length; i++) {
+      let item = arr[i]
+      if (!newObj[item[key]]) {
+        newObj[item[key]] = newArr.push(item)
       }
     }
-    return newArr;
+    return newArr
   },
   /**
    *
    * @param sKey
    * @returns {string|null}
    */
-  getCookie (sKey) {
-    return decodeURIComponent(document.cookie.replace(new RegExp('(?:(?:^|.*;)\\s*' + encodeURIComponent(sKey).replace(/[-.+*]/g, '\\$&') + '\\s*\\=\\s*([^;]*).*$)|^.*$'), '$1')) || null
+  getCookie(sKey) {
+    return (
+      decodeURIComponent(
+        document.cookie.replace(
+          new RegExp(
+            '(?:(?:^|.*;)\\s*' +
+              encodeURIComponent(sKey).replace(/[-.+*]/g, '\\$&') +
+              '\\s*\\=\\s*([^;]*).*$)|^.*$'
+          ),
+          '$1'
+        )
+      ) || null
+    )
   },
 }
 export default feTools

@@ -3,16 +3,13 @@
  */
 
 export default {
-  computed: {
-
-  },
+  computed: {},
   data() {
-    return {
-    }
+    return {}
   },
   methods: {
     havePermission: function (code) {
       return this.$store.getters.havePermission(code)
-    }
-  }
+    },
+  },
 }

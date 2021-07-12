@@ -1,21 +1,22 @@
-function WebsocketHeartbeatJs ({
+function WebsocketHeartbeatJs({
   url,
   pingTimeout = 15000,
   pongTimeout = 10000,
   reconnectTimeout = 2000,
   pingMsg = 'heartbeat',
   repeatLimit = null,
-  heartCheck = true,//@task YHBM-3119待办事项java重构 支持心跳检测开关
+  heartCheck = true,
 }) {
   this.opts = {
     url: url,
-    pingTimeout: pingTimeout,
-    pongTimeout: pongTimeout,
-    reconnectTimeout: reconnectTimeout,
-    pingMsg: pingMsg,
-    repeatLimit: repeatLimit
+    pingTimeout,
+    pongTimeout,
+    reconnectTimeout,
+    pingMsg,
+    repeatLimit,
+    heartCheck,
   }
-  this.ws = null// websocket实例
+  this.ws = null // websocket实例
   this.repeat = 0
 
   // override hook function
@@ -38,11 +39,11 @@ WebsocketHeartbeatJs.prototype.createWebSocket = function () {
 }
 
 WebsocketHeartbeatJs.prototype.initEventHandle = function () {
-  this.ws.onclose = (e) => {
+  this.ws.onclose = e => {
     this.onclose()
     this.reconnect(e)
   }
-  this.ws.onerror = (e) => {
+  this.ws.onerror = e => {
     this.onerror()
     this.reconnect(e)
   }
@@ -52,7 +53,7 @@ WebsocketHeartbeatJs.prototype.initEventHandle = function () {
     // 心跳检测重置
     this.opts.heartCheck && this.heartCheck()
   }
-  this.ws.onmessage = (event) => {
+  this.ws.onmessage = event => {
     this.onmessage(event)
     // 如果获取到消息，心跳检测重置
     // 拿到任何消息都说明当前连接是正常的
@@ -61,10 +62,10 @@ WebsocketHeartbeatJs.prototype.initEventHandle = function () {
 }
 
 WebsocketHeartbeatJs.prototype.reconnect = function () {
-  if (this.opts.repeatLimit > 0 && this.opts.repeatLimit <= this.repeat) return// limit repeat the number
+  if (this.opts.repeatLimit > 0 && this.opts.repeatLimit <= this.repeat) return // limit repeat the number
   if (this.lockReconnect || this.forbidReconnect) return
   this.lockReconnect = true
-  this.repeat++// 必须在lockReconnect之后，避免进行无效计数
+  this.repeat++ // 必须在lockReconnect之后，避免进行无效计数
   this.onreconnect()
   // 没连接上会一直重连，设置延迟避免请求过多
   setTimeout(() => {
@@ -81,7 +82,7 @@ WebsocketHeartbeatJs.prototype.heartCheck = function () {
   this.heartStart()
 }
 WebsocketHeartbeatJs.prototype.heartStart = function () {
-  if (this.forbidReconnect) return// 不再重连就不再执行心跳
+  if (this.forbidReconnect) return // 不再重连就不再执行心跳
   this.pingTimeoutId = setTimeout(() => {
     // 这里发送一个心跳，后端收到后，返回一个心跳消息，
     // onmessage拿到返回的心跳就说明连接正常

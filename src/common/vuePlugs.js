@@ -13,14 +13,15 @@ const VuePlugsConfig = {
   feAxios,
   feTools,
   feConfig,
-  $axios:axios
+  $axios: axios,
 }
 const VuePlugs = {
+  // eslint-disable-next-line
   install: function (Vue, options = {}) {
     const VUE_PLUGS = Object.keys(VuePlugsConfig)
     const VUE_FILTER = Object.keys(filter)
 
-    VUE_PLUGS.forEach(key => Vue.prototype[key] = VuePlugsConfig[key])
+    VUE_PLUGS.forEach(key => (Vue.prototype[key] = VuePlugsConfig[key]))
 
     VUE_FILTER.forEach(key => Vue.filter(key, filter[key])) // Vue 全局注册过滤器
 
@@ -29,7 +30,7 @@ const VuePlugs = {
      * @reference https://cn.vuejs.org/v2/guide/migration.html#dispatch-%E5%92%8C-broadcast-%E6%9B%BF%E6%8D%A2
      */
     Vue.prototype.$eventHub = new Vue()
-    
+
     Vue.use(VueAxios, axios)
 
     Vue.mixin(mixin)
@@ -46,11 +47,11 @@ const VuePlugs = {
             el.getElementsByTagName('input')[0].focus()
           }
         }
-      }
+      },
     })
 
     // 安装自定义主题
     Vue.use(UI_THEME)
-  }
+  },
 }
 export default VuePlugs

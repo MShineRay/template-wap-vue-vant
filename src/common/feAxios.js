@@ -1,22 +1,23 @@
 /**
  * axios 二次封装
  */
-import axios from 'axios';
-import feConfig from './feConfig';
+import axios from 'axios'
+import feConfig from './feConfig'
 
 axios.defaults.withCredentials = true
 axios.defaults.timeout = feConfig['timeout']
 
-
 function localMockSet(response) {
   if (feConfig['environment'] === 'nodeT') {
-    let url = '/local-setpost/?path=' + response.config.url.split('?')[0].replace(/:/g, '') + '&feLog=not-log';
-    let content = JSON.stringify(response.data)/**/
+    let url =
+      '/fe-local-setpost/?path=' +
+      response.config.url.split('?')[0].replace(/:/g, '') +
+      '&feLog=not-log'
+    let content = JSON.stringify(response.data) /**/
     let request = new window.XMLHttpRequest()
     request.open('POST', url, true)
     request.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded')
-    request.onreadystatechange = function () {
-    }
+    request.onreadystatechange = function () {}
     request.send(content)
   }
 }
@@ -34,12 +35,12 @@ axios.interceptors.request.use(
 // 响应拦截器
 axios.interceptors.response.use(
   response => {
-    // localMockSet(response)
+    localMockSet(response)
     try {
       response.request.axiosFELog = {
         config: response.config,
         data: response.data,
-        headers: response.headers
+        headers: response.headers,
       }
     } catch (error) {
       console.log(error)
@@ -51,7 +52,7 @@ axios.interceptors.response.use(
       error.response.request.axiosFELog = {
         config: error.response.config,
         data: error.response.data,
-        headers: error.response.headers
+        headers: error.response.headers,
       }
     } catch (e) {
       if (error && error.config) {
@@ -102,7 +103,7 @@ export default {
       if (!!params && !!params.params) {
         _params = params
       } else {
-        _params = {params}
+        _params = { params }
       }
       axios
         .get(url, _params)
@@ -114,6 +115,5 @@ export default {
           reject(error)
         })
     })
-  }
+  },
 }
-
