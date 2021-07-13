@@ -47,7 +47,8 @@ out
 
 doc/
 tests/
-
 dist/
 wwwroot/
 build/
+*.md
+.husky

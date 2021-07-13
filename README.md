@@ -1,38 +1,53 @@
 # 项目名称
 
-
 ## 项目描述
 
 ## 项目目录结构
-```
-./
-    ├── README.md
-    ├── dist/
-    ├── package-lock.json         -- 不建议删除
-    ├── package.json              
-    ├── public/                   
-    ├── src                       -- 源码目录
-    ├── babel.config.js           -- babel配置文件 **不允许**私自修改
-    └── vue.config.js             -- 配置文件 **不允许**私自修改
-```
+  ```
+  ./
+      ├── .husky/  
+      ├── dist/
+      ├── doc/                   
+      ├── fe-service/                   
+      ├── mock/   
+      ├── public/                   
+      ├── src                       -- 源码目录
+      ├── tests                     -- 测试目录
+      ├── .browserslistrc  
+      ├── .editorconfig  
+      ├── .eslintignore  
+      ├── .eslintrc.js  
+      ├── .gitignore 
+      ├── .huskyrc 
+      ├── .prettierrc 
+      ├── babel.config.js           -- babel配置文件 **不允许**私自修改
+      ├── commitlint.config.js          
+      ├── cypress.json              
+      ├── jest.config.js          
+      ├── jsconfig.js          
+      ├── package.json              
+      ├── package-lock.json         -- 不建议删除
+      ├── README.md
+      └── vue.config.js             -- 配置文件 **不允许**私自修改
+  ```
 ## 环境
 - 配置hosts
-```
-host文件位置：
-mac：sudo vim /etc/hosts
-
-windows：c:\windows\system32\drivers\etc
-
-
-    #FE localtion  environment
-    127.0.0.1 mock.local.fe.cn
-    127.0.0.1 dev.local.fe.cn 
-    127.0.0.1 test.local.fe.cn
-    127.0.0.1 sit.local.fe.cn
-    127.0.0.1 uat.local.fe.cn
-    127.0.0.1 pre.local.fe.cn 
-    
-```
+  ```
+  host文件位置：
+  mac：sudo vim /etc/hosts
+  
+  windows：c:\windows\system32\drivers\etc
+  
+  
+      #FE localtion  environment
+      127.0.0.1 mock.local.fe.cn
+      127.0.0.1 dev.local.fe.cn 
+      127.0.0.1 test.local.fe.cn
+      127.0.0.1 sit.local.fe.cn
+      127.0.0.1 uat.local.fe.cn
+      127.0.0.1 pre.local.fe.cn 
+      
+  ```
 - Project setup
   ```
   npm install
@@ -116,8 +131,8 @@ windows：c:\windows\system32\drivers\etc
 1.0.0  | 模块、bug、功能描述 | 2021-02-02 | xxx
 
 ## TODO
-- 1、将test组建抽离出来，避免被打包
-- 2、将相关lib，以node_modules方式发布、引入
+- 将test组建抽离出来，避免被打包
+- 梳理公共库、将相关lib，以node_modules方式发布、引入
     - feAxios
     - feTools
       - 基于 lodash进行扩展，支持 tree-shaking
@@ -131,20 +146,26 @@ windows：c:\windows\system32\drivers\etc
     - feDebugger
         - 基于 vconsole 进行扩展，结合 feLog，将错误信息发送到 node服务，方便排查
         -
-- 3、支持使用feCli的方式，升级单功能文件
-    - feAxios
-    - feTools
-- 4、公共的css文件
     - reset.css
     - base.css
     - mixins.css
-- 5、公共的js
 
-- 6、梳理相关规范
+- 梳理相关规范
     - css
     - js
     - git
+    - vue
     - code review
+- 统一eslint
+- 统一prettier
+- 统一editorconfig
+  - done
+- 整理业务组件库，基于第三方UI库扩张
+- 整理基础组件库，独立封装
+- .gitignore
+  - done
+- .eslintignore
+  - done
     
 ## Q&A
 - Q1、问题描述
