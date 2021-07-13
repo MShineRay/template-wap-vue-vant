@@ -166,6 +166,8 @@
   - done
 - .eslintignore
   - done
+- commitlint
+  - done
     
 ## Q&A
 - Q1、问题描述
