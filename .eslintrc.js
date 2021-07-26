@@ -1,3 +1,9 @@
+/**
+ * @reference:
+ * https://eslint.vuejs.org/
+ * https://eslint.vuejs.org/rules/
+ * https://eslint.org/docs/user-guide/configuring/
+ */
 module.exports = {
   root: true,
   env: {
@@ -21,5 +27,5 @@ module.exports = {
         jest: true,
       },
     },
-  ],
+  ]
 };
