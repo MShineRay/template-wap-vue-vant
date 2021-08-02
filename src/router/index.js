@@ -11,7 +11,10 @@ import Home from '../views/Home.vue'
 Vue.use(VueRouter)
 
 const routes = [
+  // 注意：自测功能，生产环境可以注释掉
   ...routeTest,
+
+  // 注意：下面两个路由配置，默认放到最后
   {
     path: '/',
     name: 'Home',

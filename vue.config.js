@@ -99,6 +99,26 @@ module.exports = {
       }
     }
   },
+  // css: {
+  //   loaderOptions: {
+  //     // 定制主题
+  //     // @reference
+  //     // https://youzan.github.io/vant/#/zh-CN/theme#bu-zou-er-xiu-gai-yang-shi-bian-liang
+  //     // 可覆盖的 vant 变量：https://github.com/youzan/vant/blob/dev/src/style/var.less
+  //     less: {
+  //       // 若 less-loader 版本小于 6.0，请移除 lessOptions 这一级，直接配置选项。
+  //       lessOptions: {
+  //         modifyVars: {
+  //           // 直接覆盖变量
+  //           'text-color': '#111',
+  //           'border-color': '#eee',
+  //           // 或者可以通过 less 文件覆盖（文件路径为绝对路径）
+  //           hack: `true; @import "your-less-file-path.less";`,
+  //         },
+  //       },
+  //     },
+  //   },
+  // },
   // 第三方插件配置
   // pluginOptions: {},
 }
