@@ -37,7 +37,7 @@ let IS_PRODUCTIONSOURCEMAP = true
 module.exports = {
   publicPath: '/', // process.env.VUE_APP_API_URL,//process.env.NODE_ENV === 'production' ? '/' : '/',
 
-  outputDir: './wwwroot',
+  //outputDir: './wwwroot',
   pages: {
     index: {
       // entry for the page
