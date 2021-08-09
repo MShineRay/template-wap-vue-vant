@@ -17,5 +17,15 @@ export default {
       todos: [{}],
     }
   },
+  methods: {
+    switchTest(val) {
+      switch (val) {
+        case 1:
+          break
+        case 2:
+          break
+      }
+    },
+  },
 }
 </script>

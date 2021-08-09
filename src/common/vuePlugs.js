@@ -4,7 +4,7 @@ import mixin from '@/mixin'
 import VueAxios from 'vue-axios'
 import axios from 'axios'
 import * as filter from '@/filters'
-import UI_THEME from '@/theme/theme-default'
+import UI_THEME from '@/theme/theme-default/index'
 import feConfig from './feConfig'
 import feApiConfig from './feApiConfig'
 
