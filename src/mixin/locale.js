@@ -9,14 +9,14 @@ const mixin = {
       langName: 'English',
       langList: [
         { text: 'English', value: 'en' },
-        { text: 'Arabic', value: 'ar' }
-      ]
+        { text: 'Arabic', value: 'ar' },
+      ],
     }
   },
   computed: {
     isAr() {
       return this.$i18n.locale === 'ar'
-    }
+    },
   },
   methods: {
     localeChange(type = '') {
@@ -41,12 +41,12 @@ const mixin = {
         }
       }
       return 'English'
-    }
+    },
   },
   mounted() {
     const locale = localStorage.getItem('locale') || 'en'
     this.localeChange(locale)
-  }
+  },
 }
 
 export default mixin
