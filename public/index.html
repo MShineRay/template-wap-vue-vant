@@ -13,6 +13,47 @@
     <meta name="feprojectname" content="<%= VUE_APP_FEPROJECTNAME %>">
     <link rel="icon" href="<%= BASE_URL %>favicon.ico">
     <title><%= htmlWebpackPlugin.options.title %></title>
+    <script async src="/feGoogleGtag.js?t=20210810" type="text/javascript"></script>
+    <script>
+      /**
+       * 根据环境动态加载google库
+       * TODO
+       *  Global site tag (gtag.js) - Google Analytics
+       * 公共账号 trackId
+       * dev：G-dev
+       * test：G-test
+       * online: G-online
+       */
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+
+      //根据域名动态设置 trackId
+      var envTrackId = ''
+      switch (window.location.hostname) {
+        case 'dev.hostname.com':// dev
+          envTrackId = 'G-dev'
+          break;
+        case 'test.hostname.com':// test
+          envTrackId = 'G-test'
+          break;
+        case 'online.hostname.com':// online
+          envTrackId = 'G-online'
+          break;
+        default :
+          envTrackId = 'G-online'
+          break;
+      }
+
+      gtag('config', envTrackId/*,{'debug_mode':true}*/);
+      function fe_gtag_event(eventName, data) {
+        gtag("event", eventName, data || {
+          // send_to: envTrackId,
+          // 'debug_mode':true
+        });
+        return false;
+      }
+    </script>
   </head>
   <body>
     <noscript>
