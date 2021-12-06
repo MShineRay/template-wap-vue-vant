@@ -14,7 +14,7 @@ export default {
     return {
       shown: false,
       complete: false,
-      todos: [{}],
+      todos: [{}]
     }
   },
   methods: {
@@ -25,7 +25,7 @@ export default {
         case 2:
           break
       }
-    },
-  },
+    }
+  }
 }
 </script>

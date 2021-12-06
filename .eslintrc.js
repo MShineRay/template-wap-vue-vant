@@ -5,20 +5,16 @@
  * https://eslint.org/docs/user-guide/configuring/
  */
 module.exports = {
-  root: true,   //指定配置文件根目录：表示当前文件为eslint的根配置文件，逐层查找时无需往更上一级的文件目录中进行搜索
+  root: true, //指定配置文件根目录：表示当前文件为eslint的根配置文件，逐层查找时无需往更上一级的文件目录中进行搜索
   env: {
-    node: true,
+    node: true
   },
-  extends: [
-    "plugin:vue/essential",
-    "eslint:recommended",
-    "@vue/prettier"
-  ],
+  extends: ['plugin:vue/essential', 'eslint:recommended', '@vue/prettier'],
   // plugins: [
   //   'import'
   // ],
   parserOptions: {
-    parser: "babel-eslint"/*,
+    parser: 'babel-eslint' /*,
     sourceType: 'module'*/
   },
   // 自定义规则
@@ -26,10 +22,9 @@ module.exports = {
   // "warn" 或 1 - 开启规则，使用警告级别的错误：warn (不会导致程序退出)
   // "error" 或 2 - 开启规则，使用错误级别的错误：error (当被触发的时候，程序会退出)
   rules: {
-    "no-console": process.env.NODE_ENV === "production" ? "warn" : "off",
-    "no-debugger": process.env.NODE_ENV === "production" ? "warn" : "off",
+    'no-console': process.env.NODE_ENV === 'production' ? 'warn' : 'off',
+    'no-debugger': process.env.NODE_ENV === 'production' ? 'warn' : 'off',
     // "vue/no-arrow-functions-in-watch": 2,
-
 
     // indent: ['error', 2, {SwitchCase: 1}], // 强制使用一致的缩进
     // 'indent': 0,
@@ -47,7 +42,7 @@ module.exports = {
     // // 禁止使用分号结尾
     // 'semi': [0, 'never'], // 关闭语句强制分号结尾
     // 'quotes': 0,
-    // 'comma-dangle': 0,
+    'comma-dangle': 2
     // 'spaced-comment': 0,
     // 'no-trailing-spaces': 0,
     // 'space-before-blocks': 0,
@@ -178,13 +173,10 @@ module.exports = {
   },
   overrides: [
     {
-      files: [
-        "**/__tests__/*.{j,t}s?(x)",
-        "**/tests/unit/**/*.spec.{j,t}s?(x)",
-      ],
+      files: ['**/__tests__/*.{j,t}s?(x)', '**/tests/unit/**/*.spec.{j,t}s?(x)'],
       env: {
-        jest: true,
-      },
-    },
+        jest: true
+      }
+    }
   ]
-};
+}

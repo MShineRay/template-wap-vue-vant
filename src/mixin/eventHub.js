@@ -25,7 +25,7 @@ export default {
          */
         typeof this.refreshTodo === 'function' && this.refreshTodo(data)
       }
-    },
+    }
   },
   // 最好在组件销毁前
   // 清除事件监听
@@ -35,5 +35,5 @@ export default {
      */
     this.$eventHub.$off('refresh-todo', this.refreshTodoCallback)
     console.log('eventHub refresh-todo off (' + this.$options.name + ')')
-  },
+  }
 }

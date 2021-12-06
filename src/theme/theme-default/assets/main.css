@@ -15,38 +15,37 @@ table,
 td,
 img,
 div {
-    margin: 0;
-    padding: 0;
+  margin: 0;
+  padding: 0;
 }
 body {
-    background: #fff;
-    color: #222;
-    font-size: 12px;
-    font-family: 'PingFangSC-Regular', 'Microsoft YaHei', 'Helvetica', 'sans-serif';;
+  background: #fff;
+  color: #222;
+  font-size: 12px;
+  font-family: 'PingFangSC-Regular', 'Microsoft YaHei', 'Helvetica', 'sans-serif';
 }
 
 ul,
 ol {
-    list-style-type: none;
+  list-style-type: none;
 }
 select,
 input,
 select {
-    vertical-align: middle;
+  vertical-align: middle;
 }
 
 a {
-    text-decoration: none;
+  text-decoration: none;
 }
 a:link {
-    color: #04A895;
+  color: #04a895;
 }
 a:visited {
-    color: #67CABE;
+  color: #67cabe;
 }
 a:hover,
 a:active,
 a:focus {
-    color: #04A895;
+  color: #04a895;
 }
-

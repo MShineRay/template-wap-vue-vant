@@ -40,7 +40,7 @@ axios.interceptors.response.use(
       response.request.axiosFELog = {
         config: response.config,
         data: response.data,
-        headers: response.headers,
+        headers: response.headers
       }
     } catch (error) {
       console.log(error)
@@ -52,7 +52,7 @@ axios.interceptors.response.use(
       error.response.request.axiosFELog = {
         config: error.response.config,
         data: error.response.data,
-        headers: error.response.headers,
+        headers: error.response.headers
       }
     } catch (e) {
       if (error && error.config) {
@@ -115,5 +115,5 @@ export default {
           reject(error)
         })
     })
-  },
+  }
 }

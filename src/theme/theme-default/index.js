@@ -14,6 +14,6 @@ let install = function install(Vue) {
   Vue.use(Popup)
 }
 let theme = {
-  install: install,
+  install: install
 }
 export default theme

@@ -10,6 +10,6 @@ export default {
   methods: {
     havePermission: function (code) {
       return this.$store.getters.havePermission(code)
-    },
-  },
+    }
+  }
 }

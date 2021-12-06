@@ -13,7 +13,7 @@
     "pre": "vue-cli-service serve --host pre.local.fe.cn --port 50010 --open",
     "fat": "vue-cli-service serve --host fat.local.fe.cn --port 50010 --open",
     "build": "vue-cli-service build",
-    "build:analyse": "cross-env analyse=true  vue-cli-service build",
+    "analyse": "cross-env analyse=true  vue-cli-service build",
     "test:unit": "vue-cli-service test:unit",
     "test:e2e": "vue-cli-service test:e2e",
     "lint": "vue-cli-service lint",

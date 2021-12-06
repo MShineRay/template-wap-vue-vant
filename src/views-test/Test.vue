@@ -17,13 +17,13 @@ export default {
   methods: {
     testAjax() {
       let option = {
-        test: 'post',
+        test: 'post'
       }
       this.feAxios.post(this.feApiConfig['001'], option).then(res => {
         console.log('res:', res)
       })
-    },
-  },
+    }
+  }
 }
 </script>
 

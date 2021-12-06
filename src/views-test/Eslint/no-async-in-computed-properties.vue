@@ -11,7 +11,7 @@ export default {
       } /*finally {
       }*/
       return bar
-    },
+    }
 
     /* ✗ BAD */
     // pro() {
@@ -32,6 +32,6 @@ export default {
     // anim() {
     //   requestAnimationFrame(() => {})
     // },
-  },
+  }
 }
 </script>

@@ -3,7 +3,7 @@ exports.__esModule = true
 const config = {
   'Try Again': 'حاول مجددا',
   OK: 'حسنا',
-  Loading: 'تحميل',
+  Loading: 'تحميل'
 }
 exports.default = config
 

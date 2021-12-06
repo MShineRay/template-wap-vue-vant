@@ -13,7 +13,7 @@ const VuePlugsConfig = {
   feAxios,
   feTools,
   feConfig,
-  $axios: axios,
+  $axios: axios
 }
 const VuePlugs = {
   // eslint-disable-next-line
@@ -47,11 +47,11 @@ const VuePlugs = {
             el.getElementsByTagName('input')[0].focus()
           }
         }
-      },
+      }
     })
 
     // 安装自定义主题
     Vue.use(UI_THEME)
-  },
+  }
 }
 export default VuePlugs

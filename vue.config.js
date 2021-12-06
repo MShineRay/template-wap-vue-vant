@@ -45,8 +45,8 @@ module.exports = {
       // the source template
       template: 'public/index.html',
       // output as dist/index.html
-      filename: 'index.html',
-    },
+      filename: 'index.html'
+    }
   },
 
   // lintOnSave：{ type:Boolean default:true } 问你是否使用eslint
@@ -67,7 +67,7 @@ module.exports = {
     proxy: feApiProxy(),
     before(app) {
       feApiLocal(app)
-    },
+    }
   },
   // webpack的配置在这个属性里修改configureWebpack
   configureWebpack: config => {
@@ -78,7 +78,7 @@ module.exports = {
       config.plugins.push(
         new webpack.DllReferencePlugin({
           context: process.cwd(),
-          manifest: require(dllPath + '/vendor-manifest.json'),
+          manifest: require(dllPath + '/vendor-manifest.json')
         })
       )
       config.plugins.push(
@@ -88,17 +88,25 @@ module.exports = {
           // dll 引用路径
           publicPath: linkPath,
           // dll最终输出的目录
-          outputPath: linkPath,
+          outputPath: linkPath
         })
       )
 
       // chunk文件新增构建信息
       // config.plugins.push(new webpack.BannerPlugin(makeInfo))
-      if (process.env.Analyse) {
+      if (process.env.analyse) {
         config.plugins.push(new BundleAnalyzerPlugin())
       }
+      config.externals = {
+        // key：vue是项目里引入时候要用的，value：是开发依赖库的主人定义的不能修改
+        vue: 'Vue',
+        'vue-router': 'VueRouter',
+        // 'vuex': 'Vuex',
+        // 'axios': 'axios',
+        'vue-i18n': 'VueI18n'
+      }
     }
-  },
+  }
   // css: {
   //   loaderOptions: {
   //     // 定制主题

@@ -20,11 +20,11 @@ export default {
       handler: function (val, oldVal) {
         console.log('new: %s, old: %s', val, oldVal)
       },
-      deep: true,
+      deep: true
     },
     d: {
       handler: 'someMethod',
-      immediate: true,
+      immediate: true
     },
     e: [
       'handle1',
@@ -34,18 +34,18 @@ export default {
       {
         handler: function handle3(val, oldVal) {
           console.log('new: %s, old: %s', val, oldVal)
-        },
+        }
         /* ... */
-      },
+      }
     ],
     'e.f': function (val, oldVal) {
       console.log('new: %s, old: %s', val, oldVal)
-    },
+    }
     /* ✗ BAD */
     // foo: (val, oldVal) => {
     //   console.log('new: %s, old: %s', val, oldVal)
     // },
-  },
+  }
 }
 </script>
 

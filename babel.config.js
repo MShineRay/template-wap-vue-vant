@@ -13,9 +13,9 @@ module.exports = {
         // style: true,
         // 指定样式路径
         // @reference https://youzan.github.io/vant/#/zh-CN/theme#an-xu-yin-ru-yang-shi-tui-jian
-        style: name => `${name}/style/less`,
+        style: name => `${name}/style/less`
       },
-      'vant',
-    ],
-  ],
+      'vant'
+    ]
+  ]
 }

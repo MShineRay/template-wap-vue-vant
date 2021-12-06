@@ -27,7 +27,7 @@ const mixinDatapoint = {
         window.opay_gtag_event(data.pointKey, {
           event_category: data.pointKey + '_category',
           event_label: data.pointKey + '_label',
-          ...data.data,
+          ...data.data
         })
       try {
         data.data = JSON.stringify(data.data)
@@ -44,8 +44,8 @@ const mixinDatapoint = {
      */
     $_datapoint_test() {
       console.log(11)
-    },
-  },
+    }
+  }
 }
 
 export default mixinDatapoint

@@ -5,7 +5,7 @@ function WebsocketHeartbeatJs({
   reconnectTimeout = 2000,
   pingMsg = 'heartbeat',
   repeatLimit = null,
-  heartCheck = true,
+  heartCheck = true
 }) {
   this.opts = {
     url: url,
@@ -14,7 +14,7 @@ function WebsocketHeartbeatJs({
     reconnectTimeout,
     pingMsg,
     repeatLimit,
-    heartCheck,
+    heartCheck
   }
   this.ws = null // websocket实例
   this.repeat = 0

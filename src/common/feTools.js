@@ -43,7 +43,7 @@ const Regex = {
 
   //https://blog.csdn.net/lsj19830812/article/details/4137003/
   WindowsFileName:
-    /^(?!((^(con)$)|^(con)\/..*|(^(prn)$)|^(prn)\/..*|(^(aux)$)|^(aux)\/..*|(^(nul)$)|^(nul)\/..*|(^(com)[1-9]$)|^(com)[1-9]\/..*|(^(lpt)[1-9]$)|^(lpt)[1-9]\/..*)|^\/s+|.*\/s$)(^[^/:/*/?/"/</>/|]{1,255}$)$/,
+    /^(?!((^(con)$)|^(con)\/..*|(^(prn)$)|^(prn)\/..*|(^(aux)$)|^(aux)\/..*|(^(nul)$)|^(nul)\/..*|(^(com)[1-9]$)|^(com)[1-9]\/..*|(^(lpt)[1-9]$)|^(lpt)[1-9]\/..*)|^\/s+|.*\/s$)(^[^/:/*/?/"/</>/|]{1,255}$)$/
 }
 const trim = function (string) {
   return (string || '').replace(/^[\s\uFEFF]+|[\s\uFEFF]+$/g, '')
@@ -171,7 +171,7 @@ let feTools = {
     },
     reg(regKey) {
       return Regex[regKey]
-    },
+    }
   },
   /**
    * 通过身份证号码获取出生年月日
@@ -392,7 +392,7 @@ let feTools = {
       'm+': d.getMinutes(),
       's+': d.getSeconds(),
       'q+': Math.floor((d.getMonth() + 3) / 3),
-      S: d.getMilliseconds(),
+      S: d.getMilliseconds()
     }
     if (/(y+)/.test(format)) {
       format = format.replace(RegExp.$1, (d.getFullYear() + '').substr(4 - RegExp.$1.length))
@@ -540,17 +540,17 @@ let feTools = {
     if (window.innerHeight !== undefined) {
       return {
         width: window.innerWidth,
-        height: window.innerHeight,
+        height: window.innerHeight
       }
     } else if (document.compatMode === 'CSS1Compat') {
       return {
         width: document.documentElement.clientWidth,
-        height: document.documentElement.clientHeight,
+        height: document.documentElement.clientHeight
       }
     } else {
       return {
         width: document.body.clientWidth,
-        height: document.body.clientHeight,
+        height: document.body.clientHeight
       }
     }
   },
@@ -721,6 +721,6 @@ let feTools = {
         )
       ) || null
     )
-  },
+  }
 }
 export default feTools

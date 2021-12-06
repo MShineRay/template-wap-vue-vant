@@ -7,7 +7,7 @@ const feConfig = {
   environment: 'online', // 环境类型 online：生产环境
   debug: false, // 调试模式
   timeout: 30000, // ajax 默认超时时间
-  themeType: 0, // 主题类型
+  themeType: 0 // 主题类型
 }
 Object.assign(feConfig, feServerConfig['online'].common, feServerConfig['online'].special)
 const FE_ONLINE_HOST = 'xxx.com' // 前端生产域名
@@ -21,7 +21,7 @@ if (window.location.host !== FE_ONLINE_HOST) {
     test: ['test'],
     sit: ['sit'],
     uat: ['uat'],
-    pre: ['pre'],
+    pre: ['pre']
   }
   const objEnvironment = {
     locMock: ['mock.local.fe.cn'],
@@ -35,7 +35,7 @@ if (window.location.host !== FE_ONLINE_HOST) {
     test: [],
     sit: [],
     uat: [],
-    pre: [],
+    pre: []
   }
   for (const key in objBaseDomain) {
     for (let i = 0, iLen = objBaseDomain[key].length; i < iLen; i++) {
@@ -66,7 +66,7 @@ if (window.location.host !== FE_ONLINE_HOST) {
       'locTest',
       'locSit',
       'locUat',
-      'locPre',
+      'locPre'
     ].indexOf(env) > -1
   ) {
     Object.assign(feConfig, feServerConfig[env].common, feServerConfig[env].special)

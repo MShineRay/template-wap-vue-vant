@@ -7,7 +7,7 @@ const hostToEnv = {
   'fat.local.fe.cn': 'fat',
   'sit.local.fe.cn': 'sit',
   'uat.local.fe.cn': 'uat',
-  'pre.local.fe.cn': 'pre',
+  'pre.local.fe.cn': 'pre'
 }
 
 let _host = ''
@@ -22,8 +22,8 @@ module.exports = function () {
     default: {
       //初始化配置 防止proxyObj为空时格式异常
       target: 'http://localhost',
-      pathRewrite: {},
-    },
+      pathRewrite: {}
+    }
   }
   if (envConf && envConf.common) {
     Object.keys(envConf.common).forEach(function (key) {
@@ -32,7 +32,7 @@ module.exports = function () {
         target: 'http:' + envConf.common[key].replace(/http:|https:/, ''),
         ws: true,
         changeOrigin: true,
-        pathRewrite: {},
+        pathRewrite: {}
       }
       proxyObj[_key]['pathRewrite']['^' + _key] = ''
     })
